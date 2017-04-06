@@ -1,0 +1,22 @@
+(defrule sick1
+(The-patient-has-a-sore-throat)
+(We-suspect-a-bacterial-infection)
+=>(assert(We-believe-the-patient-has-strep-throat)))
+
+
+(defrule sick2
+(The-patient-temperature-is-40C)
+=>(assert(The-patient-has-a-fever)))
+
+
+(defrule sick3
+(The-patient-has-been-sick-over-a-month)
+(The-patient-has-a-fever)
+=>(assert(We-suspect-a-bacterial-infection))
+(printout t"We suspect a bacterial infection" crlf))
+
+
+
+(assert(The-patient-temperature-is-40C)
+(The-patient-has-a-sore-throat)
+(The-patient-has-been-sick-over-a-month))
