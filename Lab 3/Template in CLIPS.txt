@@ -1,0 +1,16 @@
+KBS Lab 3
+ 
+**Template**
+(deftemplate personal-data 
+	(slot name) 
+	(slot age) 
+	(slot weight) 
+	(slot height) 
+	(multislot blood-pressure) )
+
+** assert person's data**
+(deffacts people 
+	(personal-data  (name Johan) (age 21) (weight 80) (height 175)  
+		(blood-pressure 130 80))
+	(personal-data  (name Johana) (age 20) (weight 70) (height 160)  
+		(blood-pressure 130 90)))

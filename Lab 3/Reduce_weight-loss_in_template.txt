@@ -1,0 +1,7 @@
+KBS Lab 3
+
+**Reduce Weight Loss**
+(defrule weight-loss 
+	?weight-loss <- (weight-loss ?name) 
+	?data-fact <- (personal-data (name ?name) (weight ?weight)) => 
+	(modify ?data-fact (weight (- ?weight 5))) (retract ?weight-loss) )

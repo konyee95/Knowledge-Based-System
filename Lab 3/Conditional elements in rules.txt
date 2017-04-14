@@ -1,0 +1,17 @@
+KBS Lab 3
+
+** Conditional elements in rules**
+Ex. 1
+(defrule print-ages 
+	(personal-data (name ?name)  (age ?age))
+=> 
+	(printout t ?name " is " ?age " years old." crlf) )
+
+Ex. 2
+defrule print-ages 
+	(and
+		(personal-data (name ?name)  (age ?age))
+		 (personal-data (name ?name)  (weight ?weight))
+	)
+=> 
+	(printout t ?name " weighs " ?weight " at  " ?age " years old." crlf) )

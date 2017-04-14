@@ -1,0 +1,131 @@
+KBS Lab Week 6
+
+CLIPS Lab 2
+**********NOTES**********
+**Deffaccts**
+1.(deffacts startup(animal lion)(animal monkey)(animal bird))
+2.(reset)
+
+**Matching things**
+1.(defrule animal
+(animal ?)
+=>
+( printout t "animal found" crlf))
+2.(run)
+
+**Variable in patterns**
+1.(defrule list-animals
+(animal ?name)
+=>
+( printout t  ?name " found" crlf))
+2.(run)
+
+**Multiple pattern matching**
+EXAMPLE 1
+1.(defrule mammal
+	(animal ?name)
+	(warm-blooded ?name)
+	(not (lays-eggs ?name))
+=> 
+	(assert (mammal ?name))
+	(printout t ?name " is a mammal" crlf))
+2.(run)
+
+EXAMPLE 2 
+1.(defrule mammal2
+	(mammal ?name)
+	(child-of ?name ?young)
+=>
+	(assert(mammal ?young))
+	(printout t ?young " is a mammal" crlf))
+2.(run)
+
+
+**********EXERCISES*********
+**Deffacts**
+1.(deffacts animal(animal dog)(animal cat)(animal duck)(animal turtle)(warm-blooded dog)(warm-blooded cat)(warm-blooded duck)(lays-eggs duck)(lays-eggs turtle)(child-of dog puppy)(child-of cat kitten)(child-of turtle hatchling))
+2.(reset)
+Ans: There are 12 facts are now available in the fact list.
+
+**Logic & math operators**
+1.(+ 10 (* 4 5))
+2.(* (/ 4 3) 5)
+3.(+ (- (- 10 2) 4)6)
+4.(- (+ (/ (* 4 6) 5) 3) 6)
+
+**Exercise 2**
+(defrule rule1
+(patient-has-sore-throat )
+(We-suspect-a-bacterial-infection)
+=>(assert(We-believe-the-patient-has-strep-throat))
+(printout t"We believe the patient has strep throat" crlf))
+
+
+(defrule rule2
+(patient-temperature-more-than-39)
+=>(assert(patient-has-a-fever)))
+
+
+
+(defrule rule3
+(patient-has-been-sick-over-a-month)
+(patient-has-a-fever)
+=>(assert(We-suspect-a-bacterial-infection))
+(printout t"We suspect the patient has bacterial infection" crlf))
+
+
+
+(assert(patient-temperature-more-than-39)
+(patient-has-sore-throat)
+(patient-has-been-sick-over-a-month))
+
+(run)
+
+(defrule ask-sick
+	(patient-has-a-fever)
+	(patient-temperature-more-than-39)
+	(We-suspect-a-bacterial-infection)
+=>
+	(printout t "Question: Is the patient's  temperature more than 39? [yes/no]? " crlf)
+	(printout t "Answer [yes/no]: ")
+	(assert	(patient-temperature-more-than-39(read)))
+	
+
+
+	(printout t "Question: Does the patient sick over a month? [yes/no]? " crlf)
+	(printout t "Answer [yes/no]: ")
+	(assert	(patient-has-been-sick-over-a-month(read)))
+
+	(printout t "Question: Has the patient a sore throat? [yes/no]? " crlf)
+	(printout t "Answer [yes/no]: ")
+	(assert	(patient-has-sore-throat(read)))
+)
+
+(defrule ask-sick
+  (start-question) =>
+  (printout t "Q: Is the patient's temperature more than 39? [yes/no]: " crlf)
+  (printout t "Answer [yes/no]: ")
+  (bind ?input (readline))
+  (if (neq ?input "no")
+    then
+      (assert (patient-temperature-more-than-39))
+      (printout t "The patient has fever" crlf)
+      (printout t "Q: Does the patient sick over a month? [yes/no]: "crlf)
+      (printout t "Answer [yes/no]: ")
+      (bind ?input2 (readline))
+      (if (neq ?input2 "no")
+        then
+          (assert (patient-has-been-sick-over-a-month))
+          (printout t "We suspect the patient has bacterial infection" crlf)
+          (printout t "Q: Has the patient a sore throat? [yes/no]?: "crlf)
+          (printout t "Answer [yes/no]: ")
+          (bind ?input3 (readline))
+          (if (neq ?input3 "no")
+            then
+              (assert (patient-has-sore-throat))
+	      (printout t "We believe the patient has strep throat" crlf)
+          )
+      )
+  )
+)
+
