@@ -1,0 +1,61 @@
+KBS Lab 4-Salience
+
+***Exercise 2***
+Develop a small expert system using CLIPS to diagnose a car’s problem. 
+(defrule rule1
+	(car-prob)
+=>	(printout t " Is the starter turning ? [yes/no]? ")
+	(assert (starter_turning (read))))
+
+(defrule rule2
+	(starter_turning yes)
+=>	(printout t " Got any petrol ? [yes/no]? ")
+	(assert (got_petrol (read))))
+
+(defrule rule3
+	(starter_turning no)
+=>	(printout t " Is the lights working ? [yes/no]? ")
+	(assert (working_lights (read))))
+
+(defrule rule4
+	(got_petrol yes)
+=>	(printout t " Call the AA "crlf))
+
+(defrule rule5
+	(got_petrol no)
+=>	(printout t " Buy some petrol!! "crlf))
+
+(defrule rule6
+	(working_lights yes)
+=>	(printout t " Is the solenoid click ? [yes/no]? ")
+	(assert (solenoid_click (read))))
+
+(defrule rule7
+	(working_lights no)
+=>	(printout t " Charge Battery "crlf))
+
+(defrule rule8
+	(solenoid_click yes)
+=>	(printout t " Is the terminals clean ? [yes/no]? ")
+	(assert (clean_terminal (read))))
+
+(defrule rule9
+	(solenoid_click no)
+=>	(printout t " Is the solenoid fuse OK ? [yes/no]? ")
+	(assert (solenoid_fuse (read))))
+
+(defrule rule10
+	(clean_terminal yes)
+=>	(printout t " Replace Starter "crlf))
+
+(defrule rule11
+	(clean_terminal no)
+=>	(printout t " Clean Terminals "crlf))
+
+(defrule rule12
+	(solenoid_fuse no)
+=>	(printout t " Replace Solenoid "crlf))
+
+(defrule rule13
+	(solenoid_fuse no)
+=>	(printout t " Replace Fuse"crlf))
