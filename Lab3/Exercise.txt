@@ -11,16 +11,16 @@ KBS Lab 3
 
 *Create 10 data of students.*
 (deffacts stdent 
-	(student-data  (name Johan) (id-num 1) (semester 1) (gpa 3.8) (cgpa 3.6))
-	(student-data  (name Joanne) (id-num 2) (semester 3) (gpa 3.0) (cgpa 3.5 ))
-	(student-data  (name Adam) (id-num 3) (semester 4) (gpa 3.7) (cgpa 3.6))
-	(student-data  (name Siti) (id-num 4) (semester 2) (gpa 3.85) (cgpa 3.9))
-	(student-data  (name Brenda) (id-num 5) (semester 2) (gpa 3.6) (cgpa 3.65))
+	(student-data  (name Anna) (id-num 1) (semester 1) (gpa 3.8) (cgpa 3.6))
+	(student-data  (name Max) (id-num 2) (semester 3) (gpa 3.0) (cgpa 3.5 ))
+	(student-data  (name Ariel) (id-num 3) (semester 4) (gpa 3.7) (cgpa 3.6))
+	(student-data  (name Nick) (id-num 4) (semester 2) (gpa 3.85) (cgpa 3.9))
+	(student-data  (name Belle) (id-num 5) (semester 2) (gpa 3.6) (cgpa 3.65))
 	(student-data  (name Alice) (id-num 6) (semester 4) (gpa 3.4) (cgpa 3.3))
 	(student-data  (name Luke) (id-num 7) (semester 4) (gpa 4.0) (cgpa 4.0))
 	(student-data  (name Jasmine) (id-num 8) (semester 5) (gpa 2.9)  (cgpa 3.0 ))
 	(student-data  (name Jessie) (id-num 9) (semester 6) (gpa 3.5) (cgpa 3.4))
-	(student-data  (name Yoda) (id-num 10) (semester 7) (gpa 3.2) (cgpa 3.1))
+	(student-data  (name Finnick) (id-num 10) (semester 7) (gpa 3.2) (cgpa 3.1))
 )
 
 
