@@ -19,11 +19,11 @@ Develop a small expert system using CLIPS to diagnose a car’s problem.
 
 (defrule rule4
 	(got_petrol yes)
-=>	(printout t " Call the AA "crlf))
+=>	(printout t "Solution : Call the AA. "crlf))
 
 (defrule rule5
 	(got_petrol no)
-=>	(printout t " Buy some petrol!! "crlf))
+=>	(printout t "Solution : Buy some petrol!! "crlf))
 
 (defrule rule6
 	(working_lights yes)
@@ -32,7 +32,7 @@ Develop a small expert system using CLIPS to diagnose a car’s problem.
 
 (defrule rule7
 	(working_lights no)
-=>	(printout t " Charge Battery "crlf))
+=>	(printout t "Solution : Charge Battery. "crlf))
 
 (defrule rule8
 	(solenoid_click yes)
@@ -46,16 +46,16 @@ Develop a small expert system using CLIPS to diagnose a car’s problem.
 
 (defrule rule10
 	(clean_terminal yes)
-=>	(printout t " Replace Starter "crlf))
+=>	(printout t "Solution : Replace Starter. "crlf))
 
 (defrule rule11
 	(clean_terminal no)
-=>	(printout t " Clean Terminals "crlf))
+=>	(printout t "Solution : Clean Terminals. "crlf))
 
 (defrule rule12
-	(solenoid_fuse no)
-=>	(printout t " Replace Solenoid "crlf))
+	(solenoid_fuse yes)
+=>	(printout t "Solution : Replace Solenoid. "crlf))
 
 (defrule rule13
 	(solenoid_fuse no)
-=>	(printout t " Replace Fuse"crlf))
+=>	(printout t "Solution : Replace Fuse. "crlf))
