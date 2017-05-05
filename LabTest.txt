@@ -1,0 +1,51 @@
+Question B
+(defrule rule1
+(or
+    (The physician knows the patient has meningitis)
+    (We suspect meningitis))
+=>  (assert(Infection is meningitis)) 
+    (printout t "Infection is meningitis " crlf))
+
+(defrule rule2
+(or
+    (We suspect meningitis from test result)
+    (We suspect meningitis from patient symptoms))
+=>  (assert(We suspect meningitis))
+    (printout t "We suspect meningitis" crlf))
+
+(defrule rule3
+(and
+    (Test were run)
+    (Cultures were seen)
+    (Cultures look like meningitis))
+=>  (assert(We suspect meningitis from test result))
+    (printout t "We suspect meningitis from test result" crlf))
+
+(defrule rule4
+(and
+    (The appearance of the culture is coccus)
+    (The stain of the culture is grampos))
+=>  (assert(Cultures look like meningitis))
+    (printout t "Cultures look like meningitis" crlf))
+
+(defrule rule5
+(and
+    (The patient is suffering persistent headaches)
+    (The patient is suffering dizziness)
+    (The patient has been lethargic))
+=>  (assert(We suspect meningitis from patient symptoms))
+    (printout t "We suspect meningitis from patient symptoms" crlf))
+
+(deffacts symptoms
+(Test were run)
+(Cultures were seen)
+(The appearance of the culture is coccus)
+(The stain of the culture is grampos)
+)
+
+Question C
+(+ 10 (* 4 5))
+(* (/ 4 3) 5)
+(+ (- (- 10 2) 4) 6)
+(- (+ (/ (* 4 6) 5) 3) 6)
+(+ (- (- 5 (* 2 2)) 1) 5)
