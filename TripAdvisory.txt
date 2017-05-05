@@ -1,0 +1,7 @@
+** Trip  Advisory System **
+
+
+(defrule rule1
+	(trip-advisory)
+->	(printout t " Welcome to Trip Advisory System " crlf)
+	(printout t " Let us help you  to choose the best place to go in Malaysia! " crlf))

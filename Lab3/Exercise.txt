@@ -10,7 +10,7 @@ KBS Lab 3
 	(slot cgpa) )
 
 *Create 10 data of students.*
-(deffacts stdent 
+(deffacts student 
 	(student-data  (name Anna) (id-num 1) (semester 1) (gpa 3.8) (cgpa 3.6))
 	(student-data  (name Max) (id-num 2) (semester 3) (gpa 3.0) (cgpa 3.5 ))
 	(student-data  (name Ariel) (id-num 3) (semester 4) (gpa 3.7) (cgpa 3.6))
