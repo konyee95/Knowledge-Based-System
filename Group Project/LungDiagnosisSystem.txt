@@ -69,7 +69,6 @@
 	(cough yes)
 	(chest_tightness yes)
 	(shortness_of_breath yes))
-	)
 	=>(printout t "That lung disease could be asthma." crlf))
 
 (defrule bronchiolitis
