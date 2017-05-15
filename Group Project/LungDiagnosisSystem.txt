@@ -1,8 +1,11 @@
 ** Lung Diagnosis System **
 
-(defrule rule1
-	(trip-advisory)
-=>	(printout t " *****Welcome to Lung Diagnosis System*****" crlf))
+(defrule askPatient1
+	(LDS)
+	=>(printout t " *****Welcome to Lung Diagnosis System*****" crlf)
+	(printout t "Do you have any symptoms of these ??" crlf)
+	(printout t "Fever? [yes/no]")
+	(assert (fever (read))))
 
 (defrule tuberculosis
 	(and
@@ -13,7 +16,8 @@
 	(fever yes)
 	(coughing_blood yes)
 	(night_sweats yes))
-	=> (printout t "That lung disease could be tuberculosis." crlf)
+	=> (printout t "Diagnosing a lung disease..............." crlf)
+	(printout t "That lung disease could be tuberculosis." crlf)
 )
 
 (defrule pneumonia
@@ -22,26 +26,30 @@
 	(fever yes)
 	(shaking_chills yes)
 	(shortness_of_breath yes))
-	=> (printout t "That lung disease could be pneumonia." crlf))
+	=> (printout t "Diagnosing a lung disease..............." crlf)
+	(printout t "That lung disease could be pneumonia." crlf))
 
 (defrule byssinosis
 	(and
 	(chest_tightness yes)
 	(cough yes)
 	(wheezing yes))
-	=> (printout t "That lung disease could be byssinosis."crlf))
+	=> (printout t "Diagnosing a lung disease..............."crlf)
+	(printout t "That lung disease could be byssinosis." crlf))
 
 (defrule pertusis
 	(and
-	(runny_nose)
-	(mild_fever))
-	=> (printout t "That lung disease could be pertusis."crlf))
+	(runny_nose yes)
+	(mild_fever yes))
+	=> 	(printout t "Diagnosing a lung disease..............." crlf)
+	(printout t "That lung disease could be pertusis."crlf))
 
 (defrule pneumoconiosis
 	(and
 	(chronic_cough yes)
 	(shortness_of_breath yes))
-	=>(printout t "That lung disease could be pneumoconiosis."crlf))
+	=>	(printout t "Diagnosing a lung disease..............." crlf)
+	(printout t "That lung disease could be pneumoconiosis."crlf))
 
 (defrule sarcoidosis
 	(and
@@ -53,7 +61,8 @@
 	(red_bumps_on_legs yes)
 	(sore_eyes yes)
 	(swollen_ankles yes))
-	=> (printout t "That lung disease could be sarcoidosis." crlf))
+	=> (printout t "Diagnosing a lung disease..............." crlf)
+	(printout t "That lung disease could be sarcoidosis." crlf))
 
 (defrule asbestosis
 	(and
@@ -61,7 +70,8 @@
 	(shortness_of_breath yes)
 	(chest_pain yes)
 	(lack_of_apetite yes))
-	=>(printout t "That lung disease could be asbestosis." crlf))
+	=>	(printout t "Diagnosing a lung disease..............." crlf)
+	(printout t "That lung disease could be asbestosis." crlf))
 
 (defrule asthma
 	(and
@@ -69,7 +79,8 @@
 	(cough yes)
 	(chest_tightness yes)
 	(shortness_of_breath yes))
-	=>(printout t "That lung disease could be asthma." crlf))
+	=>	(printout t "Diagnosing a lung disease..............."crlf)
+	(printout t "That lung disease could be asthma." crlf))
 
 (defrule bronchiolitis
 	(and
@@ -77,7 +88,8 @@
 	(fever yes)
 	(blue_skin yes)
 	(rapid_breath yes))
-	=>(printout t "That lung disease could be bronchiolitis." crlf))
+	=>	(printout t "Diagnosing a lung disease..............."crlf)
+	(printout t "That lung disease could be bronchiolitis." crlf))
 
 (defrule influenza
 	(and
@@ -87,7 +99,8 @@
 	(nasal_congestion yes)
 	(runny_nose yes)
 	(sore_throat yes))
-	=>(printout t "That lung disease could be influenza." crlf))
+	=>	(printout t "Diagnosing a lung disease..............."crlf)
+	(printout t "That lung disease could be influenza." crlf))
 
 (defrule lung_cancer
 	(and
@@ -101,69 +114,55 @@
 	(coughing_blood yes)
 	(headache yes)
 	(shortness_of_breath yes))
-	=>(printout t "That lung disease could be lung_cancer." crlf))
-
-(defrule askSymptom1
-	(declare (salience 100))
-	(printout t "Do you have any symptoms of these ??"crlf)
-	(printout t "Fever? [yes/no]" crlf)
-	(assert (fever (read))))
+	=>	(printout t "Diagnosing a lung disease..............."crlf)
+	(printout t "That lung disease could be lung_cancer." crlf))
 
 (defrule feverYes
 	(fever yes)
-	=>(printout t "Mild fever or Normal fever ?" crlf)
-	(printout t "Mild fever? [yes/no]" crlf)
-	(assert (mild_fever (read)))
-	(printout t "Normal fever? [yes/no]" crlf)
-	(assert (normal_fever (read))))
+	=>(printout t "Is it mild fever or serious fever? " crlf)
+	(printout t "Mild fever? [yes/no]")
+	(assert (mild_fever (read))))
 
 (defrule feverNo
 	(fever no)
-	=> (printout t "Chest pain? [yes/no]" crlf)
-	(assert (chest_pain (read))))
+	=> (printout t "Do you have chest tightness? [yes/no]")
+	(assert (chest_tightness (read))))
 
 (defrule mild_feverYes
 	(mild_fever yes)
-	=> (printout t "Runny nose? [yes/no]" crlf)
+	=> (printout t "Do you have runny nose? [yes/no]")
 	(assert (runny_nose (read))))
 
 (defrule mild_feverNo
-	(or
 	(mild_fever no)
-	(runny_nose no)
-	(normal_fever no))
-	
-	=> (printout t "Sorry, we may not ba able to diagnose the disease!!" crlf)
-	(printout t "Bye ! Thanks for using this system." crlf))
+	=> (printout t "Normal fever? [yes/no]")
+	(assert (normal_fever (read))))
 
-(defrule runny_noseYes
-	(runny_nose yes)
-	=> (printout t "Diagnosing a lung disease .............." crlf))
 
 (defrule normal_feverYes
 	(normal_fever yes)
-	=> (printout t "Cough? [yes/no]" crlf)
+	=> (printout t "Cough? [yes/no]")
 	(assert (cough (read))))
 
 (defrule coughYes
 	(cough yes)
-	=> (printout t "Dry cough, Persistent cough or Normal cough ?" crlf)
-	(printout t "Dry cough? [yes/no]" crlf)
+	=> (printout t "Is it dry cough, persistent cough or  normal cough ?" crlf)
+	(printout t "Dry cough? [yes/no]")
 	(assert (dry_cough (read))))
 
 (defrule coughNo
 	(cough no)
-	=> (printout t "Wheezing? [yes/no]" crlf)
+	=> (printout t "Wheezing? [yes/no]")
 	(assert (wheezing (read))))
 
 (defrule dry_coughYes
 	(dry_cough yes)
-	=> (printout t "Shortness of breath? [yes/no]" crlf )
+	=> (printout t "Shortness of breath? [yes/no]")
 	(assert (shortness_of_breath (read))))
 
 (defrule dry_coughNo
 	(dry_cough no)
-	=> (printout t "Persistent cough? [yes/no]" crlf)
+	=> (printout t "Persistent cough? [yes/no]")
 	(assert (persistent_cough (read))))
 
 (defrule persistent_coughYes
@@ -173,5 +172,28 @@
 
 (defrule persistent_coughNo
 	(persistent_cough no)
-	=> (printout t " Normal cough ?[yes/no]" crlf)
+	=> (printout t " Normal cough ?[yes/no]")
 	(assert (normal_cough (read))))
+
+(defrule normal_coughYes
+	(normal_cough yes)
+	=> (printout t "Shortness of breath? [yes/no]")
+	(assert (shortness_of_breath (read))))
+
+(defrule constant_fatigueYes
+	(constant_fatigue yes)
+	=> (printout t " Weight loss? [yes/no]")
+	(assert (weight_loss (read))))
+
+(defrule weight_lossYes
+	(weight_loss yes)
+	=> (printout t "))
+
+(defrule errorMessage
+	(or
+	(runny_nose no)
+	(normal_fever no)
+	(normal_cough no)
+	(constant_fatigue no))
+	=> (printout t "Sorry, we may not be able to diagnose the disease!!" crlf)
+	(printout t "Bye ! Thanks for using this system." crlf))
