@@ -102,3 +102,76 @@
 	(headache yes)
 	(shortness_of_breath yes))
 	=>(printout t "That lung disease could be lung_cancer." crlf))
+
+(defrule askSymptom1
+	(declare (salience 100))
+	(printout t "Do you have any symptoms of these ??"crlf)
+	(printout t "Fever? [yes/no]" crlf)
+	(assert (fever (read))))
+
+(defrule feverYes
+	(fever yes)
+	=>(printout t "Mild fever or Normal fever ?" crlf)
+	(printout t "Mild fever? [yes/no]" crlf)
+	(assert (mild_fever (read)))
+	(printout t "Normal fever? [yes/no]" crlf)
+	(assert (normal_fever (read))))
+
+(defrule feverNo
+	(fever no)
+	=> (printout t "Chest pain? [yes/no]" crlf)
+	(assert (chest_pain (read))))
+
+(defrule mild_feverYes
+	(mild_fever yes)
+	=> (printout t "Runny nose? [yes/no]" crlf)
+	(assert (runny_nose (read))))
+
+(defrule mild_feverNo
+	(or
+	(mild_fever no)
+	(runny_nose no)
+	(normal_fever no))
+	
+	=> (printout t "Sorry, we may not ba able to diagnose the disease!!" crlf)
+	(printout t "Bye ! Thanks for using this system." crlf))
+
+(defrule runny_noseYes
+	(runny_nose yes)
+	=> (printout t "Diagnosing a lung disease .............." crlf))
+
+(defrule normal_feverYes
+	(normal_fever yes)
+	=> (printout t "Cough? [yes/no]" crlf)
+	(assert (cough (read))))
+
+(defrule coughYes
+	(cough yes)
+	=> (printout t "Dry cough, Persistent cough or Normal cough ?" crlf)
+	(printout t "Dry cough? [yes/no]" crlf)
+	(assert (dry_cough (read))))
+
+(defrule coughNo
+	(cough no)
+	=> (printout t "Wheezing? [yes/no]" crlf)
+	(assert (wheezing (read))))
+
+(defrule dry_coughYes
+	(dry_cough yes)
+	=> (printout t "Shortness of breath? [yes/no]" crlf )
+	(assert (shortness_of_breath (read))))
+
+(defrule dry_coughNo
+	(dry_cough no)
+	=> (printout t "Persistent cough? [yes/no]" crlf)
+	(assert (persistent_cough (read))))
+
+(defrule persistent_coughYes
+	(persistent_cough yes)
+	=> (printout t "Constant fatigue? [yes/no]")
+	(assert (constant_fatigue (read))))
+
+(defrule persistent_coughNo
+	(persistent_cough no)
+	=> (printout t " Normal cough ?[yes/no]" crlf)
+	(assert (normal_cough (read))))
