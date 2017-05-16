@@ -286,7 +286,7 @@
 	=> (printout t "Are you lack of appetite?[yes/no]")
 	(assert (lack_of_apetite (read))))
 
-(defrule coughing_blood
+(defrule CoughingBlood
 	(or 
 		(and
 			(fever yes)
@@ -309,7 +309,7 @@
 		=>(printout t "Are you coughing blood? [yes/no]")
 		(assert (coughing_blood (read))))
 
-(defrule chest_pain
+(defrule ChestPain
 	(or
 		(and
 			(fever no)
@@ -326,7 +326,7 @@
 	=>(printout t "Do you have chest pain? [yes/no]")
 	(assert (chest_pain (read))))
 
-(defrule headache
+(defrule Headache
 	(or
 		(and
 			(fever yes)
@@ -345,6 +345,21 @@
 			(lack_of_apetite yes)))
 	=>(printout t " Do you suffering headache? [yes/no]")
 	(assert(headache (read))))
+
+(defrule ShakingChills
+	(or
+		(and
+			(fever yes)
+			(normal_cough yes)
+			(shortness_of_breath yes))
+		(and
+			(fever yes)
+			(cough no)
+			(wheezing no)
+			(headache yes)))
+	=>(printout t "Do you have shaking chills? [yes/no]")
+	(assert (shaking_chills (read))))
+
 
 (defrule errorMessage
 	(or
