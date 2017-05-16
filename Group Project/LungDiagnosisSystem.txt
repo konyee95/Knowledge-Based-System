@@ -360,6 +360,39 @@
 	=>(printout t "Do you have shaking chills? [yes/no]")
 	(assert (shaking_chills (read))))
 
+(defrule ChronicCough
+	(and
+		(fever no)
+		(chest_tightness no))
+	=>(printout t " Do you have chronic cough? [yes/no]")
+	(assert (chronic_cough (read))))
+
+(defrule MildChestPain
+	(and
+		(fever yes)
+		(dry_cough yes)
+		(shortness_of_breath yes))
+	=>(printout t " Do you have mild chest pain? [yes/no]")
+	(assert (mild_chest_pain (read))))
+
+(defrule ScalyRash
+	(and
+		(fever yes)
+		(dry_cough yes)
+		(shortness_of_breath yes)
+		(mild_chest_pain yes))
+	=>(printout t " Do you have scaly_rash? [yes/no]")
+	(assert (scaly_rash (read))))
+
+(defrule RedBumpsOnLegs
+	(and
+		(fever yes)
+		(dry_cough yes)
+		(shortness_of_breath yes)
+		(mild_chest_pain yes)
+		(scaly_rash yes))
+	=>(printout t " Do you have red bumps on legs? [yes/no]")
+	(assert (red_bumps_on_legs (read))))
 
 (defrule errorMessage
 	(or
