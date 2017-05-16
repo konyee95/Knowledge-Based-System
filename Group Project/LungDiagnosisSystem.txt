@@ -259,9 +259,32 @@
 	=> (printout t " Weight loss? [yes/no]")
 	(assert (weight_loss (read))))
 
-(defrule weight_lossYes
-	(weight_loss yes)
-	=> (printout t "))
+(defrule LackOfAppetite
+	(or 
+		(and
+			(fever no)
+			(chest_tightness yes)
+			(shortness_of_breath no)
+			(cough no)
+			(chest_pain yes))
+		(and
+			(fever yes)
+			(cough yes)
+			(persistent_cough yes)
+			(constant_fatigue yes)
+			(weight_loss yes))
+		(and
+			(fever yes)
+			(cough yes)
+			(normal_cough yes)
+			(shortness_of_breath yes)
+			(shaking_chills no)
+			(hoarseness yes)
+			(chest_pain yes)
+			(wheezing yes)
+			(weight_loss yes)))
+	=> (printout t "Are you lack of appetite?[yes/no]" crlf)
+	(assert (lack_of_apetite (read))))
 
 (defrule errorMessage
 	(or
