@@ -309,6 +309,23 @@
 		=>(printout t "Are you coughing blood? [yes/no]")
 		(assert (coughing_blood (read))))
 
+(defrule chest_pain
+	(or
+		(and
+			(fever no)
+			(chest_tightness yes)
+			(shortness_of_breath no)
+			(cough no))
+		(and
+			(fever yes)
+			(cough yes)
+			(normal_cough yes)
+			(shortness_of_breath yes)
+			(shaking_chills no)
+			(hoarseness yes)))
+		=>(printout t "Do you have chest pain? [yes/no]")
+		(assert (chest_pain (read))))
+
 (defrule errorMessage
 	(or
 	(runny_nose no)
