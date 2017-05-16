@@ -341,7 +341,7 @@
 			(wheezing yes)
 			(weight_loss yes)
 			(lack_of_apetite yes)))
-	=>(printout t " Do you suffering headache? [yes/no] ")
+	=>(printout t "Do you suffering headache? [yes/no] ")
 	(assert(headache (read))))
 
 (defrule ShakingChills
@@ -492,7 +492,6 @@
 		(lack_of_apetite no)
 		(coughing_blood no)
 		(night_sweats no)
-		(wheezing no)
 		(chest_pain no)
 		(hoarseness no)
 		(headache no)
@@ -517,6 +516,16 @@
 			(fever yes)
 			(wheezing no)
 			(headache yes)
-			(shaking_chills no)))
+			(shaking_chills no))
+		(and
+			(fever no)
+			(cough yes)
+			(wheezing no))
+		(and
+			(fever yes)
+			(cough yes)
+			(hoarseness yes)
+			(chest_pain yes)
+			(wheezing no)))
 	=> (printout t "~~~Sorry, we may not be able to diagnose the disease!!~~~" crlf)
 	(printout t " Bye ! Thanks for using this system." crlf))
