@@ -323,8 +323,28 @@
 			(shortness_of_breath yes)
 			(shaking_chills no)
 			(hoarseness yes)))
-		=>(printout t "Do you have chest pain? [yes/no]")
-		(assert (chest_pain (read))))
+	=>(printout t "Do you have chest pain? [yes/no]")
+	(assert (chest_pain (read))))
+
+(defrule headache
+	(or
+		(and
+			(fever yes)
+			(normal_fever yes)
+			(cough no)
+			(wheezing no))
+		(and
+			(fever yes)
+			(cough yes)
+			(shortness_of_breath yes)
+			(shaking_chills no)
+			(hoarseness yes)
+			(chest_pain yes)
+			(wheezing yes)
+			(weight_loss yes)
+			(lack_of_apetite yes)))
+	=>(printout t " Do you suffering headache? [yes/no]")
+	(assert(headache (read))))
 
 (defrule errorMessage
 	(or
