@@ -170,6 +170,14 @@
 	=> (printout t " Normal cough ?[yes/no]")
 	(assert (normal_cough (read))))
 
+(defrule PersistentCough
+	(and
+		(fever yes)
+		(cough yes) 
+		(dry_cough no))
+	=> (printout t "Persistent cough? [yes/no]")
+	(assert (persistent_cough (read))))
+
 (defrule Wheezing
 	(or
 		(and
@@ -183,7 +191,7 @@
 			(shortness_of_breath no)
 			(cough yes))
 		(and
-			(normal_fever no)
+			(normal_fever yes)
 			(cough no))
 		(and
 			(fever yes)
@@ -191,8 +199,8 @@
 			(dry_cough no)
 			(persistent_cough no)
 			(normal_cough yes)
-			(shaking_chills no)
 			(shortness_of_breath yes)
+			(shaking_chills no)
 			(hoarseness yes)
 			(chest_pain yes)))
 	=> (printout t "Wheezing? [yes/no]")
@@ -203,30 +211,30 @@
 	(assert (chest_tightness (read))))
 
 
-
-(defrule PersistentCough
-	(dry_cough no)
-	=> (printout t "Persistent cough? [yes/no]")
-	(assert (persistent_cough (read))))
-
 (defrule ConstantFatigue
 	(persistent_cough yes)
 	=> (printout t "Constant fatigue? [yes/no]")
 	(assert (constant_fatigue (read))))
 
-
-
 (defrule ShortnessOfBreath
 	(or
 		(and
 			(normal_fever yes)
+			(cough yes)
 			(dry_cough yes))
 		(and
 			(normal_fever yes)
 			(cough yes)
 			(dry_cough no)
 			(persistent_cough no)
-			(normal_cough yes)))
+			(normal_cough yes))
+		(and 
+			(fever no)
+			(chest_tightness yes))
+		(and
+			(fever no)
+			(chest_tightness no)
+			(chronic_cough yes)))
 	=> (printout t "Shortness of breath? [yes/no]")
 	(assert (shortness_of_breath (read))))
 
