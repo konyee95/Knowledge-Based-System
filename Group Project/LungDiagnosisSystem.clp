@@ -1,10 +1,8 @@
-** Lung Diagnosis System **
-
-(defrule askPatient1
+(defrule askPatient
 	(LDS)
 	=>(printout t " *****Welcome to Lung Diagnosis System*****" crlf)
 	(printout t "Do you have any symptoms of these ??" crlf)
-	(printout t "Fever? [yes/no]")
+	(printout t "Fever? [yes/no] ")
 	(assert (fever (read))))
 
 (defrule tuberculosis
@@ -119,12 +117,12 @@
 (defrule MildFeverNormalFever
 	(fever yes)
 	=>(printout t "Is it mild fever or serious fever? " crlf)
-	(printout t "Mild fever? [yes/no]")
+	(printout t " Mild fever? [yes/no] ")
 	(assert (mild_fever (read))))
 
 (defrule NormalFever
 	(mild_fever no)
-	=> (printout t "Normal fever? [yes/no]")
+	=> (printout t " Normal fever? [yes/no] ")
 	(assert (normal_fever (read))))
 
 (defrule RunnyNose
@@ -140,7 +138,7 @@
 			(headache yes)
 			(shaking_chills yes)
 			(nasal_congestion yes)))
-	=> (printout t "Do you have runny nose? [yes/no]")
+	=> (printout t "Do you have runny nose? [yes/no] ")
 	(assert (runny_nose (read))))
 
 (defrule Cough
@@ -154,7 +152,7 @@
 			(chest_tightness yes)
 			(shortness_of_breath no))
 		(normal_fever yes))
-	=> (printout t "Cough? [yes/no]")
+	=> (printout t "Do you cough? [yes/no] ")
 	(assert (cough (read))))
 
 (defrule DryCough
@@ -162,7 +160,7 @@
 		(normal_fever yes)
 		(cough yes))
 	=> (printout t "Is it dry cough, persistent cough or  normal cough ?" crlf)
-	(printout t "Dry cough? [yes/no]")
+	(printout t " Dry cough? [yes/no]")
 	(assert (dry_cough (read))))
 
 (defrule NormalCough
@@ -175,7 +173,7 @@
 		(fever yes)
 		(cough yes) 
 		(dry_cough no))
-	=> (printout t "Persistent cough? [yes/no]")
+	=> (printout t " Persistent cough? [yes/no]")
 	(assert (persistent_cough (read))))
 
 (defrule Wheezing
@@ -203,17 +201,17 @@
 			(shaking_chills no)
 			(hoarseness yes)
 			(chest_pain yes)))
-	=> (printout t "Wheezing? [yes/no]")
+	=> (printout t "Do you wheezing? [yes/no] ")
 	(assert (wheezing (read))))
 (defrule ChestTightness
 	(fever no)
-	=> (printout t "Do you have chest tightness? [yes/no]")
+	=> (printout t "Do you have chest tightness? [yes/no] ")
 	(assert (chest_tightness (read))))
 
 
 (defrule ConstantFatigue
 	(persistent_cough yes)
-	=> (printout t "Constant fatigue? [yes/no]")
+	=> (printout t "Do you have constant fatigue? [yes/no] ")
 	(assert (constant_fatigue (read))))
 
 (defrule ShortnessOfBreath
@@ -235,7 +233,7 @@
 			(fever no)
 			(chest_tightness no)
 			(chronic_cough yes)))
-	=> (printout t "Shortness of breath? [yes/no]")
+	=> (printout t "Do you have shortness of breath? [yes/no] ")
 	(assert (shortness_of_breath (read))))
 
 (defrule WeightLoss
@@ -256,7 +254,7 @@
 			(hoarseness yes)
 			(chest_pain yes)
 			(wheezing yes)))
-	=> (printout t " Weight loss? [yes/no]")
+	=> (printout t "Do you have any weight loss? [yes/no] ")
 	(assert (weight_loss (read))))
 
 (defrule LackOfAppetite
@@ -283,7 +281,7 @@
 			(chest_pain yes)
 			(wheezing yes)
 			(weight_loss yes)))
-	=> (printout t "Are you lack of appetite?[yes/no]")
+	=> (printout t "Are you lack of appetite? [yes/no] ")
 	(assert (lack_of_apetite (read))))
 
 (defrule CoughingBlood
@@ -306,7 +304,7 @@
 			(wheezing yes)
 			(weight_loss yes)
 			(lack_of_apetite yes)))
-		=>(printout t "Are you coughing blood? [yes/no]")
+		=>(printout t "Are you coughing blood? [yes/no] ")
 		(assert (coughing_blood (read))))
 
 (defrule ChestPain
@@ -323,7 +321,7 @@
 			(shortness_of_breath yes)
 			(shaking_chills no)
 			(hoarseness yes)))
-	=>(printout t "Do you have chest pain? [yes/no]")
+	=>(printout t "Do you have chest pain? [yes/no] ")
 	(assert (chest_pain (read))))
 
 (defrule Headache
@@ -343,7 +341,7 @@
 			(wheezing yes)
 			(weight_loss yes)
 			(lack_of_apetite yes)))
-	=>(printout t " Do you suffering headache? [yes/no]")
+	=>(printout t " Do you suffering headache? [yes/no] ")
 	(assert(headache (read))))
 
 (defrule ShakingChills
@@ -357,14 +355,14 @@
 			(cough no)
 			(wheezing no)
 			(headache yes)))
-	=>(printout t "Do you have shaking chills? [yes/no]")
+	=>(printout t "Do you have shaking chills? [yes/no] ")
 	(assert (shaking_chills (read))))
 
 (defrule ChronicCough
 	(and
 		(fever no)
 		(chest_tightness no))
-	=>(printout t " Do you have chronic cough? [yes/no]")
+	=>(printout t " Do you have chronic cough? [yes/no] ")
 	(assert (chronic_cough (read))))
 
 (defrule MildChestPain
@@ -372,7 +370,7 @@
 		(fever yes)
 		(dry_cough yes)
 		(shortness_of_breath yes))
-	=>(printout t " Do you have mild chest pain? [yes/no]")
+	=>(printout t " Do you have mild chest pain? [yes/no] ")
 	(assert (mild_chest_pain (read))))
 
 (defrule ScalyRash
@@ -381,7 +379,7 @@
 		(dry_cough yes)
 		(shortness_of_breath yes)
 		(mild_chest_pain yes))
-	=>(printout t " Do you have scaly_rash? [yes/no]")
+	=>(printout t "Do you have scaly_rash? [yes/no] ")
 	(assert (scaly_rash (read))))
 
 (defrule RedBumpsOnLegs
@@ -391,7 +389,7 @@
 		(shortness_of_breath yes)
 		(mild_chest_pain yes)
 		(scaly_rash yes))
-	=>(printout t " Do you have red bumps on legs? [yes/no]")
+	=>(printout t "Do you have red bumps on legs? [yes/no] ")
 	(assert (red_bumps_on_legs (read))))
 
 (defrule SoreEyes
@@ -402,7 +400,7 @@
 		(mild_chest_pain yes)
 		(scaly_rash yes)
 		(red_bumps_on_legs yes))
-	=>(printout t " Do you have sore eyes? [yes/no]")
+	=>(printout t "Do you have sore eyes? [yes/no] ")
 	(assert (sore_eyes (read))))
 
 (defrule SwollenAnkles
@@ -414,7 +412,7 @@
 		(scaly_rash yes)
 		(red_bumps_on_legs yes)
 		(sore_eyes yes))
-	=>(printout t " Do you have swollen ankles? [yes/no]")
+	=>(printout t "Do you have swollen ankles? [yes/no] ")
 	(assert (swollen_ankles (read))))
 
 (defrule NightSweats
@@ -425,7 +423,7 @@
 		(weight_loss yes)
 		(lack_of_apetite yes)
 		(coughing_blood yes))
-	=>(printout t " Do you have night sweats? [yes/no]")
+	=>(printout t "Do you have night sweats? [yes/no] ")
 	(assert (night_sweats (read))))
 
 (defrule Hoarseness
@@ -434,7 +432,7 @@
 		(normal_cough yes)
 		(shortness_of_breath yes)
 		(shaking_chills no))
-	=>(printout t " Are you suffering hoarseness? [yes/no]")
+	=>(printout t "Are you suffering hoarseness? [yes/no] ")
 	(assert (hoarseness (read))))
 
 (defrule RapidBreath
@@ -442,7 +440,7 @@
 		(fever yes)
 		(cough no)
 		(wheezing yes))
-	=>(printout t " Do you have rapid breath? [yes/no]")
+	=>(printout t "Do you have rapid breath? [yes/no] ")
 	(assert (rapid_breath (read))))
 
 (defrule BlueSkin
@@ -451,7 +449,7 @@
 		(cough no)
 		(wheezing yes)
 		(rapid_breath yes))
-	=>(printout t " Do you have blue skin? [yes/no]")
+	=>(printout t "Do you have blue skin? [yes/no] ")
 	(assert (blue_skin (read))))
 
 (defrule NasalCongestion
@@ -461,7 +459,7 @@
 		(wheezing no)
 		(headache yes)
 		(shaking_chills yes))
-	=>(printout t " Do you have nasal congestion? [yes/no]")
+	=>(printout t "Do you have nasal congestion? [yes/no] ")
 	(assert (nasal_congestion (read))))
 
 (defrule SoreThroat
@@ -473,13 +471,15 @@
 		(shaking_chills yes)
 		(nasal_congestion yes)
 		(runny_nose yes))
-	=>(printout t " Do you have sore throat? [yes/no]")
+	=>(printout t "Do you have sore throat? [yes/no] ")
 	(assert (sore throat (read))))
 
 (defrule errorMessage
 	(or
-		(mild_fever no)
-		(normal_fever no)
+		(and
+			(fever yes)
+			(mild_fever no)
+			(normal_fever no))
 		(runny_nose no)
 		(normal_cough no)
 		(constant_fatigue no)
@@ -518,5 +518,5 @@
 			(wheezing no)
 			(headache yes)
 			(shaking_chills no)))
-	=> (printout t "Sorry, we may not be able to diagnose the disease!!" crlf)
-	(printout t "Bye ! Thanks for using this system." crlf))
+	=> (printout t "~~~Sorry, we may not be able to diagnose the disease!!~~~" crlf)
+	(printout t " Bye ! Thanks for using this system." crlf))
