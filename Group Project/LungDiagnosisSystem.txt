@@ -144,14 +144,23 @@
 	(assert (runny_nose (read))))
 
 (defrule Cough
-	(normal_fever yes)
+	(or
+		(and
+			(fever no)
+			(chest_tightness yes)
+			(shortness_of_breath yes))
+		(and
+			(fever no)
+			(chest_tightness yes)
+			(shortness_of_breath no))
+		(normal_fever yes))
 	=> (printout t "Cough? [yes/no]")
 	(assert (cough (read))))
 
 (defrule DryCough
 	(and
-	(normal_fever yes)
-	(cough yes))
+		(normal_fever yes)
+		(cough yes))
 	=> (printout t "Is it dry cough, persistent cough or  normal cough ?" crlf)
 	(printout t "Dry cough? [yes/no]")
 	(assert (dry_cough (read))))
@@ -163,6 +172,16 @@
 
 (defrule Wheezing
 	(or
+		(and
+			(fever no)
+			(chest_tightness yes)
+			(shortness_of_breath yes)
+			(cough yes))
+		(and
+			(fever no)
+			(chest_tightness yes)
+			(shortness_of_breath no)
+			(cough yes))
 		(and
 			(normal_fever no)
 			(cough no))
