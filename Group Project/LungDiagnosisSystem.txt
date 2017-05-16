@@ -239,7 +239,23 @@
 	(assert (shortness_of_breath (read))))
 
 (defrule WeightLoss
-	(constant_fatigue yes)
+	(or
+		(and
+			(fever yes)
+			(dry_cough no)
+			(persistent_cough yes)
+			(constant_fatigue yes))
+		(and
+			(fever yes)
+			(cough yes)
+			(dry_cough no)
+			(persistent_cough no)
+			(normal_cough yes)
+			(shortness_of_breath yes)
+			(shaking_chills no)
+			(hoarseness yes)
+			(chest_pain yes)
+			(wheezing yes)))
 	=> (printout t " Weight loss? [yes/no]")
 	(assert (weight_loss (read))))
 
