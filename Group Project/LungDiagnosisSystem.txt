@@ -394,6 +394,87 @@
 	=>(printout t " Do you have red bumps on legs? [yes/no]")
 	(assert (red_bumps_on_legs (read))))
 
+(defrule SoreEyes
+	(and
+		(fever yes)
+		(dry_cough yes)
+		(shortness_of_breath yes)
+		(mild_chest_pain yes)
+		(scaly_rash yes)
+		(red_bumps_on_legs yes))
+	=>(printout t " Do you have sore eyes? [yes/no]")
+	(assert (sore_eyes (read))))
+
+(defrule SwollenAnkles
+	(and
+		(fever yes)
+		(dry_cough yes)
+		(shortness_of_breath yes)
+		(mild_chest_pain yes)
+		(scaly_rash yes)
+		(red_bumps_on_legs yes)
+		(sore_eyes yes))
+	=>(printout t " Do you have swollen ankles? [yes/no]")
+	(assert (swollen_ankles (read))))
+
+(defrule NightSweats
+	(and
+		(fever yes)
+		(persistent_cough yes)
+		(constant_fatigue yes)
+		(weight_loss yes)
+		(lack_of_apetite yes)
+		(coughing_blood yes))
+	=>(printout t " Do you have night sweats? [yes/no]")
+	(assert (night_sweats (read))))
+
+(defrule Hoarseness
+	(and
+		(fever yes)
+		(normal_cough yes)
+		(shortness_of_breath yes)
+		(shaking_chills no))
+	=>(printout t " Are you suffering hoarseness? [yes/no]")
+	(assert (hoarseness (read))))
+
+(defrule RapidBreath
+	(and
+		(fever yes)
+		(cough no)
+		(wheezing yes))
+	=>(printout t " Do you have rapid breath? [yes/no]")
+	(assert (rapid_breath (read))))
+
+(defrule BlueSkin
+	(and
+		(fever yes)
+		(cough no)
+		(wheezing yes)
+		(rapid_breath yes))
+	=>(printout t " Do you have blue skin? [yes/no]")
+	(assert (blue_skin (read))))
+
+(defrule NasalCongestion
+	(and
+		(fever yes)
+		(cough no)
+		(wheezing no)
+		(headache yes)
+		(shaking_chills yes))
+	=>(printout t " Do you have nasal congestion? [yes/no]")
+	(assert (nasal_congestion (read))))
+
+(defrule SoreThroat
+	(and
+		(fever yes)
+		(cough no)
+		(wheezing no)
+		(headache yes)
+		(shaking_chills yes)
+		(nasal_congestion yes)
+		(runny_nose yes))
+	=>(printout t " Do you have nasal congestion? [yes/no]")
+	(assert (nasal_congestion (read))))
 (defrule errorMessage
 	(or
 	(runny_nose no)
