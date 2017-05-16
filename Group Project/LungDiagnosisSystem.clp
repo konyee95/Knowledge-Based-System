@@ -472,7 +472,7 @@
 		(nasal_congestion yes)
 		(runny_nose yes))
 	=>(printout t "Do you have sore throat? [yes/no] ")
-	(assert (sore throat (read))))
+	(assert (sore_throat (read))))
 
 (defrule errorMessage
 	(or
