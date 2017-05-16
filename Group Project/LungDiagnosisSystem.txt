@@ -9,111 +9,110 @@
 
 (defrule tuberculosis
 	(and
-	(persistent_cough yes)
-	(constant_fatigue yes)
-	(weight_loss yes)
-	(lack_of_apetite yes)
-	(fever yes)
-	(coughing_blood yes)
-	(night_sweats yes))
+		(persistent_cough yes)
+		(constant_fatigue yes)
+		(weight_loss yes)
+		(lack_of_apetite yes)
+		(fever yes)
+		(coughing_blood yes)
+		(night_sweats yes))
 	=> (printout t "Diagnosing a lung disease..............." crlf)
-	(printout t "That lung disease could be tuberculosis." crlf)
-)
+	(printout t "That lung disease could be tuberculosis." crlf))
 
 (defrule pneumonia
 	(and
-	(cough yes)
-	(fever yes)
-	(shaking_chills yes)
-	(shortness_of_breath yes))
+		(cough yes)
+		(fever yes)
+		(shaking_chills yes)
+		(shortness_of_breath yes))
 	=> (printout t "Diagnosing a lung disease..............." crlf)
 	(printout t "That lung disease could be pneumonia." crlf))
 
 (defrule byssinosis
 	(and
-	(chest_tightness yes)
-	(cough yes)
-	(wheezing yes))
+		(chest_tightness yes)
+		(cough yes)
+		(wheezing yes))
 	=> (printout t "Diagnosing a lung disease..............."crlf)
 	(printout t "That lung disease could be byssinosis." crlf))
 
 (defrule pertusis
 	(and
-	(runny_nose yes)
-	(mild_fever yes))
+		(runny_nose yes)
+		(mild_fever yes))
 	=> 	(printout t "Diagnosing a lung disease..............." crlf)
 	(printout t "That lung disease could be pertusis."crlf))
 
 (defrule pneumoconiosis
 	(and
-	(chronic_cough yes)
-	(shortness_of_breath yes))
+		(chronic_cough yes)
+		(shortness_of_breath yes))
 	=>	(printout t "Diagnosing a lung disease..............." crlf)
 	(printout t "That lung disease could be pneumoconiosis."crlf))
 
 (defrule sarcoidosis
 	(and
-	(dry_cough yes)
-	(shortness_of_breath yes)
-	(mild_chest_pain yes)
-	(scaly_rash yes)
-	(fever yes)
-	(red_bumps_on_legs yes)
-	(sore_eyes yes)
-	(swollen_ankles yes))
+		(dry_cough yes)
+		(shortness_of_breath yes)
+		(mild_chest_pain yes)
+		(scaly_rash yes)
+		(fever yes)
+		(red_bumps_on_legs yes)
+		(sore_eyes yes)
+		(swollen_ankles yes))
 	=> (printout t "Diagnosing a lung disease..............." crlf)
 	(printout t "That lung disease could be sarcoidosis." crlf))
 
 (defrule asbestosis
 	(and
-	(chest_tightness yes)
-	(shortness_of_breath yes)
-	(chest_pain yes)
-	(lack_of_apetite yes))
+		(chest_tightness yes)
+		(shortness_of_breath yes)
+		(chest_pain yes)
+		(lack_of_apetite yes))
 	=>	(printout t "Diagnosing a lung disease..............." crlf)
 	(printout t "That lung disease could be asbestosis." crlf))
 
 (defrule asthma
 	(and
-	(wheezing yes)
-	(cough yes)
-	(chest_tightness yes)
-	(shortness_of_breath yes))
+		(wheezing yes)
+		(cough yes)
+		(chest_tightness yes)
+		(shortness_of_breath yes))
 	=>	(printout t "Diagnosing a lung disease..............."crlf)
 	(printout t "That lung disease could be asthma." crlf))
 
 (defrule bronchiolitis
 	(and
-	(wheezing yes)
-	(fever yes)
-	(blue_skin yes)
-	(rapid_breath yes))
+		(wheezing yes)
+		(fever yes)
+		(blue_skin yes)
+		(rapid_breath yes))
 	=>	(printout t "Diagnosing a lung disease..............."crlf)
 	(printout t "That lung disease could be bronchiolitis." crlf))
 
 (defrule influenza
 	(and
-	(headache yes)
-	(fever yes)
-	(shaking_chills yes)
-	(nasal_congestion yes)
-	(runny_nose yes)
-	(sore_throat yes))
+		(headache yes)
+		(fever yes)
+		(shaking_chills yes)
+		(nasal_congestion yes)
+		(runny_nose yes)
+		(sore_throat yes))
 	=>	(printout t "Diagnosing a lung disease..............."crlf)
 	(printout t "That lung disease could be influenza." crlf))
 
 (defrule lung_cancer
 	(and
-	(cough yes)
-	(fever yes)
-	(hoarseness yes)
-	(chest_pain yes)
-	(wheezing yes)
-	(weight_loss yes)
-	(lack_of_apetite yes)
-	(coughing_blood yes)
-	(headache yes)
-	(shortness_of_breath yes))
+		(cough yes)
+		(fever yes)
+		(hoarseness yes)
+		(chest_pain yes)
+		(wheezing yes)
+		(weight_loss yes)
+		(lack_of_apetite yes)
+		(coughing_blood yes)
+		(headache yes)
+		(shortness_of_breath yes))
 	=>	(printout t "Diagnosing a lung disease..............."crlf)
 	(printout t "That lung disease could be lung_cancer." crlf))
 
