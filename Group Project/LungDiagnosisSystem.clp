@@ -1,6 +1,6 @@
 (defrule askPatient
 	(LDS)
-	=>(printout t " *****Welcome to Lung Diagnosis System*****" crlf)
+	=>(printout t " **********Welcome to Lung Diagnosis System**********" crlf)
 	(printout t "Do you have any symptoms of these ??" crlf)
 	(printout t "Fever? [yes/no] ")
 	(assert (fever (read))))
@@ -123,7 +123,7 @@
 
 (defrule NormalFever
 	(mild_fever no)
-	=> (printout t " Normal fever? [yes/no] ")
+	=> (printout t " Serious fever? [yes/no] ")
 	(assert (normal_fever (read))))
 
 (defrule RunnyNose
@@ -156,12 +156,12 @@
 		(normal_fever yes)
 		(cough yes))
 	=> (printout t "Is it dry cough, persistent cough or  normal cough ?" crlf)
-	(printout t " Dry cough? [yes/no]")
+	(printout t " Dry cough? [yes/no] ")
 	(assert (dry_cough (read))))
 
 (defrule NormalCough
 	(persistent_cough no)
-	=> (printout t " Normal cough ?[yes/no]")
+	=> (printout t " Normal cough ?[yes/no] ")
 	(assert (normal_cough (read))))
 
 (defrule PersistentCough
@@ -169,7 +169,7 @@
 		(fever yes)
 		(cough yes) 
 		(dry_cough no))
-	=> (printout t " Persistent cough? [yes/no]")
+	=> (printout t " Persistent cough? [yes/no] ")
 	(assert (persistent_cough (read))))
 
 (defrule Wheezing
@@ -330,7 +330,8 @@
 			(chest_pain yes)
 			(wheezing yes)
 			(weight_loss yes)
-			(lack_of_apetite yes)))
+			(lack_of_apetite yes)
+			(coughing_blood yes)))
 	=>(printout t "Do you suffering headache? [yes/no] ")
 	(assert(headache (read))))
 
@@ -360,7 +361,7 @@
 		(fever yes)
 		(dry_cough yes)
 		(shortness_of_breath yes))
-	=>(printout t " Do you have mild chest pain? [yes/no] ")
+	=>(printout t "Do you have mild chest pain? [yes/no] ")
 	(assert (mild_chest_pain (read))))
 
 (defrule ScalyRash
@@ -491,11 +492,6 @@
 			(normal_fever no))
 		(and
 			(fever yes)
-			(dry_cough yes)
-			(shortness_of_breath no))
-		(and
-			(fever yes)
-			(normal_cough yes)
 			(shortness_of_breath no))
 		(and
 			(fever yes)
@@ -508,12 +504,6 @@
 			(hoarseness yes)
 			(chest_pain yes)
 			(wheezing no))
-		(and
-			(fever yes)
-			(persistent_cough yes)
-			(constant_fatigue yes)
-			(weight_loss yes)
-			(lack_of_apetite no))
 		(and
 			(fever no)
 			(chest_tightness yes)
@@ -530,5 +520,5 @@
 		(and
 			(fever yes)
 			(lack_of_apetite no)))
-	=> (printout t "~~~Sorry, we may not be able to diagnose the disease!!~~~" crlf)
-	(printout t " Bye ! Thanks for using this system." crlf))
+	=> (printout t "Sorry, we may not be able to diagnose the disease!!" crlf)
+	(printout t "~~~Bye ! Thanks for using this system.~~~" crlf))
