@@ -304,7 +304,6 @@
 		(and
 			(fever no)
 			(chest_tightness yes)
-			(shortness_of_breath no)
 			(cough no))
 		(and
 			(fever yes)
@@ -468,10 +467,6 @@
 
 (defrule ErrorMessage
 	(or
-		(and
-			(fever yes)
-			(mild_fever no)
-			(normal_fever no))
 		(runny_nose no)
 		(normal_cough no)
 		(constant_fatigue no)
@@ -484,13 +479,17 @@
 		(lack_of_apetite no)
 		(coughing_blood no)
 		(night_sweats no)
-		(chest_pain no)
 		(hoarseness no)
 		(headache no)
 		(rapid_breath no)
 		(blue_skin no)
 		(nasal_congestion no)
 		(sore_throat no)
+		(chronic_cough no)
+		(and
+			(fever yes)
+			(mild_fever no)
+			(normal_fever no))
 		(and
 			(fever yes)
 			(dry_cough yes)
@@ -519,6 +518,11 @@
 			(fever no)
 			(chest_tightness no)
 			(chronic_cough yes)
-			(shortness_of_breath no)))
+			(shortness_of_breath no))
+		(and
+			(fever no)
+			(chest_tightness yes)
+			(cough no)
+			(chest_pain yes)))
 	=> (printout t "~~~Sorry, we may not be able to diagnose the disease!!~~~" crlf)
 	(printout t " Bye ! Thanks for using this system." crlf))
