@@ -30,7 +30,8 @@
 	(and
 		(chest_tightness yes)
 		(cough yes)
-		(wheezing yes))
+		(wheezing yes)
+		(shortness_of_breath no))
 	=> (printout t "Diagnosing a lung disease..............."crlf)
 	(printout t "That lung disease could be byssinosis." crlf))
 
@@ -145,12 +146,7 @@
 	(or
 		(and
 			(fever no)
-			(chest_tightness yes)
-			(shortness_of_breath yes))
-		(and
-			(fever no)
-			(chest_tightness yes)
-			(shortness_of_breath no))
+			(chest_tightness yes))
 		(normal_fever yes))
 	=> (printout t "Do you cough? [yes/no] ")
 	(assert (cough (read))))
@@ -181,12 +177,6 @@
 		(and
 			(fever no)
 			(chest_tightness yes)
-			(shortness_of_breath yes)
-			(cough yes))
-		(and
-			(fever no)
-			(chest_tightness yes)
-			(shortness_of_breath no)
 			(cough yes))
 		(and
 			(normal_fever yes)
@@ -228,7 +218,9 @@
 			(normal_cough yes))
 		(and 
 			(fever no)
-			(chest_tightness yes))
+			(chest_tightness yes)
+			(cough yes)
+			(wheezing yes))
 		(and
 			(fever no)
 			(chest_tightness no)
@@ -519,6 +511,7 @@
 			(shaking_chills no))
 		(and
 			(fever no)
+			(chest_tightness yes)
 			(cough yes)
 			(wheezing no))
 		(and
