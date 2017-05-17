@@ -254,7 +254,6 @@
 		(and
 			(fever no)
 			(chest_tightness yes)
-			(shortness_of_breath no)
 			(cough no)
 			(chest_pain yes))
 		(and
@@ -476,7 +475,6 @@
 		(sore_eyes no)
 		(swollen_ankles no)
 		(weight_loss no)
-		(lack_of_apetite no)
 		(coughing_blood no)
 		(night_sweats no)
 		(hoarseness no)
@@ -486,6 +484,7 @@
 		(nasal_congestion no)
 		(sore_throat no)
 		(chronic_cough no)
+		(chest_pain no)
 		(and
 			(fever yes)
 			(mild_fever no)
@@ -510,6 +509,12 @@
 			(chest_pain yes)
 			(wheezing no))
 		(and
+			(fever yes)
+			(persistent_cough yes)
+			(constant_fatigue yes)
+			(weight_loss yes)
+			(lack_of_apetite no))
+		(and
 			(fever no)
 			(chest_tightness yes)
 			(cough yes)
@@ -521,8 +526,9 @@
 			(shortness_of_breath no))
 		(and
 			(fever no)
-			(chest_tightness yes)
-			(cough no)
-			(chest_pain yes)))
+			(lack_of_apetite no))
+		(and
+			(fever yes)
+			(lack_of_apetite no)))
 	=> (printout t "~~~Sorry, we may not be able to diagnose the disease!!~~~" crlf)
 	(printout t " Bye ! Thanks for using this system." crlf))
