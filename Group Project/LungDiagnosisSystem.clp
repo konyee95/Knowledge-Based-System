@@ -354,7 +354,7 @@
 	(and
 		(fever no)
 		(chest_tightness no))
-	=>(printout t " Do you have chronic cough? [yes/no] ")
+	=>(printout t "Do you have chronic cough? [yes/no] ")
 	(assert (chronic_cough (read))))
 
 (defrule MildChestPain
@@ -466,7 +466,7 @@
 	=>(printout t "Do you have sore throat? [yes/no] ")
 	(assert (sore_throat (read))))
 
-(defrule errorMessage
+(defrule ErrorMessage
 	(or
 		(and
 			(fever yes)
