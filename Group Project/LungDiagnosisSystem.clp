@@ -7,7 +7,7 @@
 
 (defrule tuberculosis
 	(and
-		(persistent_cough yes)
+		(cough persistent)
 		(constant_fatigue yes)
 		(weight_loss yes)
 		(lack_of_apetite yes)
@@ -35,10 +35,10 @@
 	=> (printout t "Diagnosing a lung disease..............."crlf)
 	(printout t "That lung disease could be byssinosis." crlf))
 
-(defrule pertusis
+(defrule pertussis
 	(and
 		(runny_nose yes)
-		(mild_fever yes))
+		(fever mild))
 	=> 	(printout t "Diagnosing a lung disease..............." crlf)
 	(printout t "That lung disease could be pertusis."crlf))
 
@@ -51,7 +51,7 @@
 
 (defrule sarcoidosis
 	(and
-		(dry_cough yes)
+		(cough dry)
 		(shortness_of_breath yes)
 		(mild_chest_pain yes)
 		(scaly_rash yes)
@@ -117,23 +117,17 @@
 
 (defrule MildFeverNormalFever
 	(fever yes)
-	=>(printout t "Is it mild fever or serious fever? " crlf)
-	(printout t " Mild fever? [yes/no] ")
-	(assert (mild_fever (read))))
-
-(defrule NormalFever
-	(mild_fever no)
-	=> (printout t " Serious fever? [yes/no] ")
-	(assert (normal_fever (read))))
+	=>(printout t "Is it mild fever or serious fever? [mild/serious]")
+	(assert (fever (read))))
 
 (defrule RunnyNose
 	(or
 		(and
 			(fever yes)
-			(mild_fever yes))
+			(fever mild))
 		(and
 			(fever yes)
-			(normal_fever yes)
+			(fever serious)
 			(cough no)
 			(wheezing no)
 			(headache yes)
@@ -147,30 +141,16 @@
 		(and
 			(fever no)
 			(chest_tightness yes))
-		(normal_fever yes))
+		(fever serious))
 	=> (printout t "Do you cough? [yes/no] ")
 	(assert (cough (read))))
 
 (defrule DryCough
 	(and
-		(normal_fever yes)
+		(fever serious)
 		(cough yes))
-	=> (printout t "Is it dry cough, persistent cough or  normal cough ?" crlf)
-	(printout t " Dry cough? [yes/no] ")
-	(assert (dry_cough (read))))
-
-(defrule NormalCough
-	(persistent_cough no)
-	=> (printout t " Normal cough ?[yes/no] ")
-	(assert (normal_cough (read))))
-
-(defrule PersistentCough
-	(and
-		(fever yes)
-		(cough yes) 
-		(dry_cough no))
-	=> (printout t " Persistent cough? [yes/no] ")
-	(assert (persistent_cough (read))))
+	=> (printout t "Is it dry cough, persistent cough or  normal cough [dry/persistent/normal]?" crlf)
+	(assert (cough (read))))
 
 (defrule Wheezing
 	(or
@@ -179,20 +159,19 @@
 			(chest_tightness yes)
 			(cough yes))
 		(and
-			(normal_fever yes)
+			(fever serious)
 			(cough no))
 		(and
 			(fever yes)
 			(cough yes)
-			(dry_cough no)
-			(persistent_cough no)
-			(normal_cough yes)
+			(cough normal)
 			(shortness_of_breath yes)
 			(shaking_chills no)
 			(hoarseness yes)
 			(chest_pain yes)))
 	=> (printout t "Do you wheezing? [yes/no] ")
 	(assert (wheezing (read))))
+
 (defrule ChestTightness
 	(fever no)
 	=> (printout t "Do you have chest tightness? [yes/no] ")
@@ -200,22 +179,20 @@
 
 
 (defrule ConstantFatigue
-	(persistent_cough yes)
+	(cough persistent)
 	=> (printout t "Do you have constant fatigue? [yes/no] ")
 	(assert (constant_fatigue (read))))
 
 (defrule ShortnessOfBreath
 	(or
 		(and
-			(normal_fever yes)
+			(fever serious)
 			(cough yes)
-			(dry_cough yes))
+			(cough dry))
 		(and
-			(normal_fever yes)
+			(fever serious)
 			(cough yes)
-			(dry_cough no)
-			(persistent_cough no)
-			(normal_cough yes))
+			(cough normal))
 		(and 
 			(fever no)
 			(chest_tightness yes)
@@ -232,15 +209,12 @@
 	(or
 		(and
 			(fever yes)
-			(dry_cough no)
-			(persistent_cough yes)
+			(cough persistent)
 			(constant_fatigue yes))
 		(and
 			(fever yes)
 			(cough yes)
-			(dry_cough no)
-			(persistent_cough no)
-			(normal_cough yes)
+			(cough normal)
 			(shortness_of_breath yes)
 			(shaking_chills no)
 			(hoarseness yes)
@@ -259,13 +233,13 @@
 		(and
 			(fever yes)
 			(cough yes)
-			(persistent_cough yes)
+			(cough persistent)
 			(constant_fatigue yes)
 			(weight_loss yes))
 		(and
 			(fever yes)
 			(cough yes)
-			(normal_cough yes)
+			(cough normal)
 			(shortness_of_breath yes)
 			(shaking_chills no)
 			(hoarseness yes)
@@ -280,14 +254,14 @@
 		(and
 			(fever yes)
 			(cough yes)
-			(persistent_cough yes)
+			(cough persistent)
 			(constant_fatigue yes)
 			(weight_loss yes)
 			(lack_of_apetite yes))
 		(and
 			(fever yes)
 			(cough yes)
-			(normal_cough yes)
+			(cough normal)
 			(shortness_of_breath yes)
 			(shaking_chills no)
 			(hoarseness yes)
@@ -307,7 +281,7 @@
 		(and
 			(fever yes)
 			(cough yes)
-			(normal_cough yes)
+			(cough normal)
 			(shortness_of_breath yes)
 			(shaking_chills no)
 			(hoarseness yes)))
@@ -318,7 +292,7 @@
 	(or
 		(and
 			(fever yes)
-			(normal_fever yes)
+			(fever serious)
 			(cough no)
 			(wheezing no))
 		(and
@@ -339,7 +313,7 @@
 	(or
 		(and
 			(fever yes)
-			(normal_cough yes)
+			(cough normal)
 			(shortness_of_breath yes))
 		(and
 			(fever yes)
@@ -359,7 +333,7 @@
 (defrule MildChestPain
 	(and
 		(fever yes)
-		(dry_cough yes)
+		(cough dry)
 		(shortness_of_breath yes))
 	=>(printout t "Do you have mild chest pain? [yes/no] ")
 	(assert (mild_chest_pain (read))))
@@ -367,7 +341,7 @@
 (defrule ScalyRash
 	(and
 		(fever yes)
-		(dry_cough yes)
+		(cough dry)
 		(shortness_of_breath yes)
 		(mild_chest_pain yes))
 	=>(printout t "Do you have scaly_rash? [yes/no] ")
@@ -376,7 +350,7 @@
 (defrule RedBumpsOnLegs
 	(and
 		(fever yes)
-		(dry_cough yes)
+		(cough dry)
 		(shortness_of_breath yes)
 		(mild_chest_pain yes)
 		(scaly_rash yes))
@@ -386,7 +360,7 @@
 (defrule SoreEyes
 	(and
 		(fever yes)
-		(dry_cough yes)
+		(cough dry)
 		(shortness_of_breath yes)
 		(mild_chest_pain yes)
 		(scaly_rash yes)
@@ -397,7 +371,7 @@
 (defrule SwollenAnkles
 	(and
 		(fever yes)
-		(dry_cough yes)
+		(cough dry)
 		(shortness_of_breath yes)
 		(mild_chest_pain yes)
 		(scaly_rash yes)
@@ -409,7 +383,7 @@
 (defrule NightSweats
 	(and
 		(fever yes)
-		(persistent_cough yes)
+		(cough persistent)
 		(constant_fatigue yes)
 		(weight_loss yes)
 		(lack_of_apetite yes)
@@ -420,7 +394,7 @@
 (defrule Hoarseness
 	(and
 		(fever yes)
-		(normal_cough yes)
+		(cough normal)
 		(shortness_of_breath yes)
 		(shaking_chills no))
 	=>(printout t "Are you suffering hoarseness? [yes/no] ")
@@ -468,7 +442,6 @@
 (defrule ErrorMessage
 	(or
 		(runny_nose no)
-		(normal_cough no)
 		(constant_fatigue no)
 		(mild_chest_pain no)
 		(scaly_rash no)
@@ -488,8 +461,8 @@
 		(chest_pain no)
 		(and
 			(fever yes)
-			(mild_fever no)
-			(normal_fever no))
+			(fever mild)
+			(fever serious))
 		(and
 			(fever yes)
 			(shortness_of_breath no))
